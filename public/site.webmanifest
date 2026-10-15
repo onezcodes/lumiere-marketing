@@ -1,0 +1,13 @@
+{
+    "name": "Lumière",
+    "short_name": "Lumière",
+    "description": "Astrology for Myanmar, on iPhone.",
+    "start_url": "/",
+    "display": "browser",
+    "background_color": "#42273b",
+    "theme_color": "#42273b",
+    "icons": [
+        { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+        { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+    ]
+}

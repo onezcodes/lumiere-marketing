@@ -19,10 +19,10 @@ const SignFinder = lazy(() => import('./components/SignFinder'));
 import { LanguageProvider } from './i18n';
 import { ThemeProvider } from './theme';
 
-export default function App() {
+export default function App({ initialLang }) {
     return (
         <ThemeProvider>
-            <LanguageProvider>
+            <LanguageProvider initialLang={initialLang}>
                 <Header />
                 <main>
                     <Hero />

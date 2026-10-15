@@ -8,12 +8,16 @@ import PhoneFrame from './PhoneFrame';
  * The walkthrough: a numbered list of steps beside one phone on wide screens; on phones the
  * same steps become a swipeable row of cards, each with its own screenshot.
  */
-/** Whether the phone layout applies, so only one layout (and its screenshots) is rendered. */
+/**
+ * Whether the phone layout applies, so only one layout (and its screenshots) is rendered.
+ * Starts wide, like the prerendered HTML, and checks the screen once mounted.
+ */
 function useNarrow(query = '(max-width: 820px)') {
-    const [narrow, setNarrow] = useState(() => window.matchMedia(query).matches);
+    const [narrow, setNarrow] = useState(false);
     useEffect(() => {
         const media = window.matchMedia(query);
         const onChange = () => setNarrow(media.matches);
+        onChange();
         media.addEventListener('change', onChange);
 
         return () => media.removeEventListener('change', onChange);

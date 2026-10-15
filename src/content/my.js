@@ -4,7 +4,13 @@ import { pricing as p } from './site';
 const n = (value) => String(value).replace(/[0-9]/g, (digit) => '၀၁၂၃၄၅၆၇၈၉'[digit]);
 
 export default {
-    meta: { lang: 'my', label: 'မြန်မာ', short: 'မြန်မာ' },
+    meta: { lang: 'my', label: 'မြန်မာ', short: 'မြန်မာ', locale: 'my_MM', path: '/my/' },
+    seo: {
+        title: 'Lumière — မြန်မာ ဗေဒင်နဲ့ ဇာတာ၊ iPhone အတွက်',
+        description: 'လစဉ် ရာသီဟောစာတမ်း၊ ဇာတာခွင်နဲ့ မဟာဘုတ်၊ ဖူးစာ ကိုက်ညီမှုနဲ့ မေးချင်တာ မေးနိုင်တဲ့ ဗေဒင်ဆရာများ — Lumière iPhone အက်ပ်၊ မြန်မာလိုနဲ့ အင်္ဂလိပ်လို။',
+        shareDescription: 'လစဉ် ရာသီဟောစာတမ်း၊ ဇာတာခွင်နဲ့ မဟာဘုတ်၊ ဖူးစာ ကိုက်ညီမှုနဲ့ ဗေဒင်ဆရာများ။',
+        imageAlt: 'Lumière — မြန်မာ ဗေဒင်နဲ့ ဇာတာ၊ iPhone အတွက်',
+    },
     nav: { features: 'အင်္ဂါရပ်များ', wallpapers: 'နောက်ခံပုံ', tarot: 'တားရော့', guide: 'အသုံးပြုနည်း', readers: 'ဗေဒင်ဆရာများ', faq: 'မေးခွန်းများ', menu: 'မီနူး', close: 'ပိတ်ရန်' },
     cta: { appStore: 'App Store မှာ ဒေါင်းလုဒ်လုပ်ပါ', soon: 'App Store မှာ မကြာခင် ရပါမယ်', iphone: 'iPhone အတွက်', getApp: 'အက်ပ်ကို ရယူပါ' },
     hero: {

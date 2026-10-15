@@ -1,7 +1,13 @@
 import { pricing as p } from './site';
 
 export default {
-    meta: { lang: 'en', label: 'English', short: 'EN' },
+    meta: { lang: 'en', label: 'English', short: 'EN', locale: 'en_US', path: '/' },
+    seo: {
+        title: 'Lumière — astrology for Myanmar, on iPhone',
+        description: 'Monthly readings for your sign, your birth chart and Mahabote, and real readers you can ask anything. Lumière for iPhone, in Burmese and English.',
+        shareDescription: 'Monthly sign readings, birth chart and Mahabote, matches, and real readers you can ask.',
+        imageAlt: 'Lumière — astrology for Myanmar, on iPhone',
+    },
     nav: { features: 'Features', wallpapers: 'Wallpapers', tarot: 'Ask the cards', guide: 'App guide', readers: 'For readers', faq: 'FAQ', menu: 'Menu', close: 'Close' },
     cta: { appStore: 'Download on the App Store', soon: 'Coming soon to the App Store', iphone: 'For iPhone', getApp: 'Get the app' },
     hero: {

@@ -34,6 +34,14 @@ Both are code-split and mount only near the viewport (`LazySection`), so they co
 
 Built for slow connections: an inline night-sky splash paints before the script; Figtree loads with `display=swap` and the Myanmar font only when Burmese is chosen; screenshots are WebP at 360 and 720px picked by `srcset`; the starfield caps pixel ratio, draws at ~30fps and stops off screen; motion stops for `prefers-reduced-motion`. On emulated slow 3G with a 4× slower CPU, a phone paints in ~2s and loads ~230KB up front.
 
+## Search and sharing
+
+`npm run build` prerenders the page into real HTML (`scripts/prerender.mjs`): English at `/`, Burmese at `/my/`, so search engines and link previews (Facebook, Viber, Telegram) see the content without running JavaScript. Each page gets its own title, description, canonical link, `hreflang` alternates, share image (`public/og/share-{en,my}.jpg`, 1200×630) and structured data (website, iOS app, FAQ); `robots.txt` and `sitemap.xml` are written alongside.
+
+All absolute URLs come from `siteUrl` in `src/content/site.js`. **When the domain is decided, change it there and rebuild.** The language toggle switches in place and updates the URL; someone who chose Burmese before is moved to `/my/`.
+
+Components render in Node at build time, so read `window`, `document` or `localStorage` only inside effects, and start with what the prerendered HTML shows (see `useNarrow` in `AppGuide.jsx` and `hydrated` in `theme.jsx`).
+
 ## Light and dark
 
 Like the app's Appearance setting, the site follows the device until someone chooses: the ☀/☾ button in the header switches and remembers it, and the footer's Light / Dark / Auto goes back to the device (`src/theme.jsx`). An inline script in `index.html` applies the theme before first paint, so there is no white flash. Light sections use theme tokens (`--bg`, `--text`, `--muted`, `--card`, `--line`… in `src/styles/tokens.css`) with the app's own dark colours; the night sections are dark in both.
