@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="512" height="512"><defs><clipPath id="m"><path clip-rule="evenodd" d="M-400 -400 H600 V600 H-400 Z M-250.41 293.07 L-242.41 306.93 L277.21 6.93 L269.21 -6.93 Z"/></clipPath></defs>
+<path d="M62.13 148.00V54.00H72.10V138.85H120.47V148.00Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0" stroke-linejoin="round" clip-path="url(#m)"/>
+<line x1="56.6" y1="100" x2="148" y2="100" stroke="#9EE493" stroke-width="1.4" transform="rotate(-30 100 100)"/>
+<path d="M52.0 119.7 Q53.1 126.6 60.0 127.7 Q53.1 128.8 52.0 135.7 Q50.9 128.8 44.0 127.7 Q50.9 126.6 52.0 119.7 Z" fill="#F5D547"/><path d="M159.8 43.5 Q162.9 62.4 181.8 65.5 Q162.9 68.6 159.8 87.5 Q156.7 68.6 137.8 65.5 Q156.7 62.4 159.8 43.5 Z" fill="#F5D547"/></svg>

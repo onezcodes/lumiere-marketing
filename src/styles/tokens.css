@@ -1,0 +1,67 @@
+/* Lumière brand tokens (Duotone scheme): white canvas, plum carries identity, spring is the light. */
+:root {
+    --plum: #42273b;
+    --plum-deep: #2d1b29;
+    --mauve: #70566d;
+    --sage: #abc8c0;
+    --mint: #daf7dc;
+    --spring: #9ee493;
+    --white: #ffffff;
+    --hairline: rgba(66, 39, 59, 0.18);
+    --hairline-soft: rgba(66, 39, 59, 0.08);
+    --fire: #ec7d5b;
+    --earth: #c49a3a;
+    --air: #8e9be8;
+    --water: #57a7d2;
+
+    --font-latin: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    --font-myanmar: 'Noto Sans Myanmar', 'Pyidaungsu', 'Myanmar Text', sans-serif;
+
+    --radius-sm: 10px;
+    --radius: 16px;
+    --radius-lg: 28px;
+    --shadow: 0 1px 2px rgba(45, 27, 41, 0.06), 0 12px 32px rgba(45, 27, 41, 0.08);
+    --shadow-lg: 0 24px 60px rgba(45, 27, 41, 0.25);
+    --container: 1180px;
+    --gutter: clamp(16px, 4vw, 32px);
+    --section: clamp(64px, 10vw, 120px);
+}
+
+/*
+ * Theme tokens for the light sections. The night sections (hero, tarot, wallpapers, readers,
+ * closing, footer) are dark in both themes and keep using the brand swatches directly.
+ * Dark values are the app's own (Assets.xcassets/Colors: surface, on-surface, primary-muted…).
+ */
+:root {
+    color-scheme: light;
+    --bg: #ffffff;
+    --bg-tint: #f6fdf6;
+    --card: #ffffff;
+    --text: #42273b;
+    --muted: #70566d;
+    --line: rgba(66, 39, 59, 0.18);
+    --line-soft: rgba(66, 39, 59, 0.08);
+    --fill: #42273b;
+    --fill-hover: #70566d;
+    --on-fill: #daf7dc;
+    --hover: rgba(218, 247, 220, 0.5);
+    --header-bg: rgba(255, 255, 255, 0.86);
+    --placeholder-from: #daf7dc;
+}
+:root[data-theme='dark'] {
+    color-scheme: dark;
+    --bg: #150d13;
+    --bg-tint: #1b1018;
+    --card: #1f1420;
+    --text: #f2e9ef;
+    --muted: #b39cad;
+    --line: rgba(242, 233, 239, 0.16);
+    --line-soft: rgba(242, 233, 239, 0.08);
+    --fill: #4a2c42;
+    --fill-hover: #5e3a55;
+    --on-fill: #f2e9ef;
+    --hover: rgba(255, 255, 255, 0.05);
+    --header-bg: rgba(21, 13, 19, 0.84);
+    --placeholder-from: #2c1a27;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.35);
+}

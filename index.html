@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Lumière — astrology for Myanmar, on iPhone</title>
+        <meta name="description" content="Monthly readings for your sign, your birth chart and Mahabote, and real readers you can ask anything. Lumière for iPhone, in Burmese and English." />
+        <meta name="theme-color" content="#42273b" />
+        <meta name="color-scheme" content="light dark" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Lumière — astrology for Myanmar, on iPhone" />
+        <meta property="og:description" content="Monthly sign readings, birth chart and Mahabote, matches, and real readers you can ask." />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap" />
+        <link rel="preload" as="image" type="image/webp" media="(prefers-color-scheme: light)" imagesrcset="/screens/my-reading-360.webp 360w, /screens/my-reading-720.webp 720w" imagesizes="(max-width: 600px) 200px, 300px" fetchpriority="high" />
+        <link rel="preload" as="image" type="image/webp" media="(prefers-color-scheme: dark)" imagesrcset="/screens/dark/my-reading-360.webp 360w, /screens/dark/my-reading-720.webp 720w" imagesizes="(max-width: 600px) 200px, 300px" fetchpriority="high" />
+        <script>
+            // Theme before first paint: the saved choice, else the device's. No white flash in dark mode.
+            (function () {
+                var saved = null;
+                try { saved = localStorage.getItem('lumiere-landing-theme'); } catch (e) {}
+                var dark = saved === 'dark' || (saved !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+            })();
+        </script>
+        <style>
+            /* Paints at once on slow networks, before the app's script arrives. */
+            html { background: #2a1824; }
+            #root:empty { min-height: 100vh; background: radial-gradient(120% 80% at 80% 0%, #5c3654 0%, #42273b 40%, #1f1219 100%); display: grid; place-items: center; }
+            #root:empty::before { content: ''; width: 132px; height: 30px; background: url('/brand/lumiere-L-wordmark-on-dark.svg') center / contain no-repeat; animation: lm-pulse 1.6s ease-in-out infinite; }
+            @keyframes lm-pulse { 50% { opacity: 0.45; } }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="module" src="/src/main.jsx"></script>
+    </body>
+</html>

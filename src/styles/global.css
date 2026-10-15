@@ -1,0 +1,250 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-latin);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+html[lang='my'] body {
+    font-family: var(--font-latin), var(--font-myanmar);
+    line-height: 1.85;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+.on-plum :focus-visible {
+    outline-color: var(--spring);
+}
+
+.container {
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+}
+
+.section {
+    padding: var(--section) 0;
+}
+
+.section-head {
+    max-width: 680px;
+    margin-bottom: clamp(36px, 5vw, 56px);
+}
+
+.section-head.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
+html[lang='my'] .eyebrow {
+    letter-spacing: 0;
+    text-transform: none;
+    font-size: 14px;
+}
+
+.h2 {
+    font-size: clamp(30px, 4.4vw, 46px);
+    line-height: 1.12;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+html[lang='my'] .h2 {
+    line-height: 1.5;
+    letter-spacing: 0;
+    font-size: clamp(26px, 3.6vw, 38px);
+}
+
+.lead {
+    margin-top: 16px;
+    font-size: clamp(17px, 1.6vw, 19px);
+    color: var(--muted);
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--spring);
+    color: var(--plum);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background-color 160ms,
+        color 160ms,
+        border-color 160ms,
+        transform 160ms;
+    white-space: nowrap;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-primary {
+    background: var(--fill);
+    color: var(--on-fill);
+}
+
+.btn-primary:hover {
+    background: var(--fill-hover);
+}
+
+.btn-spring {
+    background: var(--spring);
+    color: var(--plum);
+}
+
+.btn-spring:hover {
+    background: #b2ecaa;
+}
+
+.btn-ghost {
+    background: transparent;
+    border-color: var(--line);
+    color: var(--text);
+}
+
+.btn-ghost:hover {
+    border-color: var(--text);
+}
+
+.on-plum .btn-ghost {
+    border-color: rgba(218, 247, 220, 0.35);
+    color: var(--mint);
+}
+
+.on-plum .btn-ghost:hover {
+    border-color: var(--mint);
+}
+
+.btn[aria-disabled='true'] {
+    cursor: default;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity 700ms ease,
+        transform 700ms ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    * {
+        animation: none !important;
+    }
+}
+
+/* Decorative rings and wheels may extend past the edge; never let them widen the page. */
+main {
+    overflow-x: clip;
+}
+
+/* Burmese: headings and nav break only between phrases (see Phrase.jsx), never inside a word. */
+.phrase {
+    white-space: nowrap;
+}
+.header-nav a,
+.mobile-nav a,
+.lang-toggle button {
+    white-space: nowrap;
+}
+/* A single phrase wider than its box may still break rather than push the page sideways. */
+.phrase {
+    overflow-wrap: anywhere;
+}
