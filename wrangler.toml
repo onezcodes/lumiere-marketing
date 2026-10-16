@@ -1,0 +1,11 @@
+name = "lumiere"
+main = "src/index.js"
+compatibility_date = "2026-10-16"
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+
+[build]
+command = "npm run build"

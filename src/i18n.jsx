@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import en from './content/en';
 import my from './content/my';
+import { applyDocumentSeo } from './seo';
 
 export const LANGUAGES = { en, my };
 const STORAGE_KEY = 'lumiere-landing-lang';
@@ -41,10 +42,8 @@ export function LanguageProvider({ initialLang, children }) {
     }, []);
 
     useEffect(() => {
-        const { meta, seo } = LANGUAGES[lang];
-        document.documentElement.lang = lang;
-        document.title = seo.title;
-        document.querySelector('meta[name="description"]')?.setAttribute('content', seo.description);
+        const { meta } = LANGUAGES[lang];
+        applyDocumentSeo(LANGUAGES[lang]);
         if (window.location.pathname !== meta.path) {
             window.history.replaceState(null, '', meta.path + window.location.search + window.location.hash);
         }

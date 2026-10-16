@@ -36,9 +36,9 @@ Built for slow connections: an inline night-sky splash paints before the script;
 
 ## Search and sharing
 
-`npm run build` prerenders the page into real HTML (`scripts/prerender.mjs`): English at `/`, Burmese at `/my/`, so search engines and link previews (Facebook, Viber, Telegram) see the content without running JavaScript. Each page gets its own title, description, canonical link, `hreflang` alternates, share image (`public/og/share-{en,my}.jpg`, 1200×630) and structured data (website, iOS app, FAQ); `robots.txt` and `sitemap.xml` are written alongside.
+`npm run build` prerenders the page into real HTML (`scripts/prerender.mjs`): English at `/`, Burmese at `/my/`, so search engines and link previews (Facebook, Viber, Telegram) see the content without running JavaScript. Each page gets its own title, description, canonical link, `hreflang` alternates (`en`, `my-MM`, `x-default`), share image (`public/og/share-{en,my}.jpg`, 1200×630) and structured data (organization, website, webpage, iOS app, FAQ). `robots.txt`, `sitemap.xml` and `llms.txt` are written alongside.
 
-All absolute URLs come from `siteUrl` in `src/content/site.js`. **When the domain is decided, change it there and rebuild.** The language toggle switches in place and updates the URL; someone who chose Burmese before is moved to `/my/`.
+All absolute URLs come from `siteUrl` in `src/content/site.js` (`https://lumiere.onezcodes.com`). Change it there and rebuild if the domain moves. The language toggle is a real link to `/` or `/my/` (so crawlers can follow it) and still switches in place; someone who chose Burmese before is moved to `/my/`.
 
 Components render in Node at build time, so read `window`, `document` or `localStorage` only inside effects, and start with what the prerendered HTML shows (see `useNarrow` in `AppGuide.jsx` and `hydrated` in `theme.jsx`).
 

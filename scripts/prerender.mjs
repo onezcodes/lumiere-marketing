@@ -6,7 +6,7 @@
  *   dist/my/index.html   Burmese, at /my/
  *
  * Each page gets its own title, description, canonical link, hreflang alternates, share image
- * and structured data. robots.txt and sitemap.xml are written from the same site URL.
+ * and structured data. robots.txt, sitemap.xml and llms.txt are written from the same site URL.
  */
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -17,57 +17,36 @@ const dist = path.join(root, 'dist');
 const serverDir = path.join(root, 'dist-ssr');
 
 const { render, LANGUAGES } = await import(pathToFileURL(path.join(serverDir, 'entry-server.js')).href);
-const { site } = await import(pathToFileURL(path.join(root, 'src/content/site.js')).href);
+const { siteUrl, pageUrl, shareImage, hreflang, structuredData, ROBOTS } = await import(pathToFileURL(path.join(root, 'src/seo.js')).href);
 
-const base = site.siteUrl.replace(/\/$/, '');
 const template = await readFile(path.join(dist, 'index.html'), 'utf8');
 const langs = Object.values(LANGUAGES);
 
 const attr = (value) => String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const urlFor = (lang) => base + LANGUAGES[lang].meta.path;
+const urlFor = (lang) => pageUrl(LANGUAGES[lang].meta.path);
 // JSON inside <script> must not be able to close the tag.
 const json = (value) => JSON.stringify(value).replace(/</g, '\\u003c');
-
-function structuredData(copy) {
-    const { meta, seo, faq } = copy;
-    const app = {
-        '@type': 'MobileApplication',
-        name: 'Lumière',
-        operatingSystem: 'iOS',
-        applicationCategory: 'LifestyleApplication',
-        description: seo.description,
-        inLanguage: ['my', 'en'],
-        url: urlFor(meta.lang),
-        image: `${base}/og/share-${meta.lang}.jpg`,
-        offers: { '@type': 'Offer', price: '0', priceCurrency: 'MMK' },
-        ...(site.appStoreUrl ? { downloadUrl: site.appStoreUrl, installUrl: site.appStoreUrl } : {}),
-    };
-    const website = { '@type': 'WebSite', name: 'Lumière', url: urlFor(meta.lang), inLanguage: meta.lang };
-    const questions = {
-        '@type': 'FAQPage',
-        inLanguage: meta.lang,
-        mainEntity: faq.items.map((item) => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })),
-    };
-
-    return { '@context': 'https://schema.org', '@graph': [website, app, questions] };
-}
 
 function head(copy) {
     const { meta, seo } = copy;
     const url = urlFor(meta.lang);
-    const image = `${base}/og/share-${meta.lang}.jpg`;
+    const image = shareImage(meta.lang);
     const tags = [
         `<title>${attr(seo.title)}</title>`,
         `<meta name="description" content="${attr(seo.description)}" />`,
+        `<meta name="robots" content="${ROBOTS}" />`,
+        `<meta name="application-name" content="Lumière" />`,
         `<link rel="canonical" href="${url}" />`,
-        ...langs.map((other) => `<link rel="alternate" hreflang="${other.meta.lang}" href="${urlFor(other.meta.lang)}" />`),
+        ...langs.map((other) => `<link rel="alternate" hreflang="${hreflang(other.meta.lang)}" href="${urlFor(other.meta.lang)}" />`),
         `<link rel="alternate" hreflang="x-default" href="${urlFor('en')}" />`,
+        `<link rel="sitemap" type="application/xml" title="Sitemap" href="${siteUrl}/sitemap.xml" />`,
         `<meta property="og:type" content="website" />`,
         `<meta property="og:site_name" content="Lumière" />`,
         `<meta property="og:title" content="${attr(seo.title)}" />`,
         `<meta property="og:description" content="${attr(seo.shareDescription)}" />`,
         `<meta property="og:url" content="${url}" />`,
         `<meta property="og:image" content="${image}" />`,
+        `<meta property="og:image:secure_url" content="${image}" />`,
         `<meta property="og:image:type" content="image/jpeg" />`,
         `<meta property="og:image:width" content="1200" />`,
         `<meta property="og:image:height" content="630" />`,
@@ -78,6 +57,7 @@ function head(copy) {
         `<meta name="twitter:title" content="${attr(seo.title)}" />`,
         `<meta name="twitter:description" content="${attr(seo.shareDescription)}" />`,
         `<meta name="twitter:image" content="${image}" />`,
+        `<meta name="twitter:image:alt" content="${attr(seo.imageAlt)}" />`,
         `<script type="application/ld+json">${json(structuredData(copy))}</script>`,
     ];
     if (meta.lang === 'my') {
@@ -108,20 +88,64 @@ for (const copy of langs) {
     console.log(`prerendered ${copy.meta.path} → ${path.relative(root, file)}`);
 }
 
-await writeFile(path.join(dist, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${base}/sitemap.xml\n`);
+await writeFile(path.join(dist, 'robots.txt'), `User-agent: *\nAllow: /\n\nHost: ${siteUrl.replace(/^https:\/\//, '')}\nSitemap: ${siteUrl}/sitemap.xml\n`);
 
-const alternates = langs.map((copy) => `    <xhtml:link rel="alternate" hreflang="${copy.meta.lang}" href="${urlFor(copy.meta.lang)}" />`).join('\n');
+const alternates = langs.map((copy) => `    <xhtml:link rel="alternate" hreflang="${hreflang(copy.meta.lang)}" href="${urlFor(copy.meta.lang)}" />`).join('\n');
 const today = new Date().toISOString().slice(0, 10);
 const urls = langs
-    .map(
-        (copy) =>
-            `  <url>\n    <loc>${urlFor(copy.meta.lang)}</loc>\n    <lastmod>${today}</lastmod>\n${alternates}\n    <xhtml:link rel="alternate" hreflang="x-default" href="${urlFor('en')}" />\n  </url>`,
-    )
+    .map((copy) => {
+        const image = shareImage(copy.meta.lang);
+        const priority = copy.meta.lang === 'en' ? '1.0' : '0.9';
+        return [
+            '  <url>',
+            `    <loc>${urlFor(copy.meta.lang)}</loc>`,
+            `    <lastmod>${today}</lastmod>`,
+            '    <changefreq>monthly</changefreq>',
+            `    <priority>${priority}</priority>`,
+            alternates,
+            `    <xhtml:link rel="alternate" hreflang="x-default" href="${urlFor('en')}" />`,
+            '    <image:image>',
+            `      <image:loc>${image}</image:loc>`,
+            `      <image:title>${attr(copy.seo.imageAlt)}</image:title>`,
+            '    </image:image>',
+            '  </url>',
+        ].join('\n');
+    })
     .join('\n');
 await writeFile(
     path.join(dist, 'sitemap.xml'),
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls}\n</urlset>\n`,
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n</urlset>\n`,
 );
-console.log('wrote robots.txt and sitemap.xml');
+
+const en = LANGUAGES.en;
+const my = LANGUAGES.my;
+const faqLines = (copy) => copy.faq.items.map((item) => `- ${item.q} ${item.a}`).join('\n');
+await writeFile(
+    path.join(dist, 'llms.txt'),
+    `# Lumière
+
+> ${en.seo.description}
+
+Lumière is an iPhone astrology app for people in Myanmar. It includes a monthly reading for each of the 12 signs, a Western birth chart, Mahabote (Myanmar weekday astrology: animal, direction and planet), compatibility for two birthdays, yes-or-no tarot, monthly wallpapers, and real readers you can ask. Basic is free. Personal readings use credits at 100 MMK each. The site and the app are in Burmese and English.
+
+## Pages
+
+- [English](${urlFor('en')}): ${en.seo.title}
+- [Burmese](${urlFor('my')}): ${my.seo.title}
+
+## English
+
+${en.hero.subtitle}
+
+${faqLines(en)}
+
+## မြန်မာ
+
+${my.hero.subtitle}
+
+${faqLines(my)}
+`,
+);
+console.log('wrote robots.txt, sitemap.xml and llms.txt');
 
 await rm(serverDir, { recursive: true, force: true });

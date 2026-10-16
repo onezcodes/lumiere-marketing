@@ -3,10 +3,10 @@ import { pricing as p } from './site';
 export default {
     meta: { lang: 'en', label: 'English', short: 'EN', locale: 'en_US', path: '/' },
     seo: {
-        title: 'Lumière — astrology for Myanmar, on iPhone',
-        description: 'Monthly readings for your sign, your birth chart and Mahabote, and real readers you can ask anything. Lumière for iPhone, in Burmese and English.',
-        shareDescription: 'Monthly sign readings, birth chart and Mahabote, matches, and real readers you can ask.',
-        imageAlt: 'Lumière — astrology for Myanmar, on iPhone',
+        title: 'Lumière — Myanmar astrology, Mahabote and birth chart',
+        description: 'Myanmar astrology on iPhone: monthly sign readings, your birth chart and Mahabote, yes-or-no tarot, and real readers. Burmese and English. Pay in MMK.',
+        shareDescription: 'Monthly zodiac readings, Mahabote, birth chart, tarot, and real readers — astrology for Myanmar on iPhone.',
+        imageAlt: 'Lumière, Myanmar astrology on iPhone: a monthly reading, birth chart and Mahabote',
     },
     nav: { features: 'Features', wallpapers: 'Wallpapers', tarot: 'Ask the cards', guide: 'App guide', readers: 'For readers', faq: 'FAQ', menu: 'Menu', close: 'Close' },
     cta: { appStore: 'Download on the App Store', soon: 'Coming soon to the App Store', iphone: 'For iPhone', getApp: 'Get the app' },
@@ -275,6 +275,10 @@ export default {
             { q: 'What if a reader doesn’t answer?', a: `Readers have ${p.answerHours} hours. If they don’t answer in time, your credits go back to your balance.` },
             { q: 'Can I use it in Burmese?', a: 'Yes. Lumière works in Burmese and English.' },
             { q: 'I don’t know my birth time.', a: 'That’s fine. Your sign and Mahabote only need the date. To go further, the birth time estimate asks a few questions to narrow it down.' },
+            {
+                q: 'What is Mahabote?',
+                a: 'Mahabote is Myanmar astrology based on the weekday you were born. Lumière shows your animal, direction and planet beside your Western birth chart.',
+            },
         ],
     },
     footer: {

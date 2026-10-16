@@ -241,7 +241,8 @@ main {
 }
 .header-nav a,
 .mobile-nav a,
-.lang-toggle button {
+.lang-toggle button,
+.lang-toggle a {
     white-space: nowrap;
 }
 /* A single phrase wider than its box may still break rather than push the page sideways. */

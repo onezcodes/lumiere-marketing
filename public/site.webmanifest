@@ -1,8 +1,12 @@
 {
     "name": "Lumière",
     "short_name": "Lumière",
-    "description": "Astrology for Myanmar, on iPhone.",
+    "description": "Myanmar astrology on iPhone: monthly readings, Mahabote, birth chart, and real readers.",
+    "id": "/",
+    "lang": "en",
     "start_url": "/",
+    "scope": "/",
+    "categories": ["lifestyle"],
     "display": "browser",
     "background_color": "#42273b",
     "theme_color": "#42273b",
