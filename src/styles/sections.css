@@ -1285,6 +1285,52 @@ html[lang='my'] .feature-body {
     color: var(--muted);
     font-size: 15px;
 }
+.guide-chapter {
+    display: block;
+    margin: 18px 0 6px 20px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+li:first-child > .guide-chapter {
+    margin-top: 0;
+}
+.guide-where {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--hover);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+}
+.guide-where svg {
+    flex-shrink: 0;
+}
+.guide-tips {
+    display: grid;
+    gap: 8px;
+    margin: 12px 0 0;
+    padding: 0;
+    list-style: none;
+    color: var(--muted);
+    font-size: 14px;
+}
+.guide-tips li {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+}
+.guide-tips svg {
+    flex-shrink: 0;
+    margin-top: 3px;
+    color: var(--text);
+}
 .guide-stage {
     position: sticky;
     top: 96px;
@@ -1349,6 +1395,34 @@ html[lang='my'] .feature-body {
         border-radius: var(--radius);
         background: var(--card);
         border: 1px solid var(--line-soft);
+    }
+    .guide-chapter-chips {
+        display: flex;
+        gap: 8px;
+        margin: 0 calc(var(--gutter) * -1) 4px;
+        padding: 0 var(--gutter);
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    .guide-chapter-chips::-webkit-scrollbar {
+        display: none;
+    }
+    .guide-chapter-chips button {
+        flex-shrink: 0;
+        padding: 8px 14px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--text);
+        font: inherit;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .guide-chapter-chips button[aria-pressed='true'] {
+        background: var(--fill);
+        border-color: var(--fill);
+        color: var(--on-fill);
     }
     .guide-card-phone {
         width: 72%;

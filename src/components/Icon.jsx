@@ -95,6 +95,21 @@ const PATHS = {
             <path d="M12 11v6M12 7.5v.5" />
         </>
     ),
+    question: (
+        <>
+            <circle cx="12" cy="12" r="9" />
+            <path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.4M12 16.8v.2" />
+        </>
+    ),
+    bars: <path d="M5 20v-6M10 20V9M15 20v-8M20 20V5M3 20h18" />,
+    qr: (
+        <>
+            <rect x="4" y="4" width="6" height="6" rx="1" />
+            <rect x="14" y="4" width="6" height="6" rx="1" />
+            <rect x="4" y="14" width="6" height="6" rx="1" />
+            <path d="M14 14h2v2M20 14v.01M18 18h2v2M14 20h.01M16 18v2" />
+        </>
+    ),
     check: <path d="m5 12.5 4.5 4.5L19 7.5" />,
     sparkle: <path d="M12 2c.6 5 2.4 7.4 8 8-5.6.6-7.4 3-8 8-.6-5-2.4-7.4-8-8 5.6-.6 7.4-3 8-8Z" />,
     arrowLeft: <path d="M15 5 8 12l7 7" />,

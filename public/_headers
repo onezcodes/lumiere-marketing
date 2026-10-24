@@ -2,6 +2,9 @@
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+  # Browsers that have seen the site once only use https afterwards (the http → https redirect
+  # itself is Cloudflare's "Always Use HTTPS" setting).
+  Strict-Transport-Security: max-age=31536000
 
 /robots.txt
   Content-Type: text/plain; charset=utf-8

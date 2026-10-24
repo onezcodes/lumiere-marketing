@@ -11,6 +11,14 @@ export function shareImage(lang) {
     return `${siteUrl}/og/share-${lang}.jpg`;
 }
 
+/** The numeric App Store id from `site.appStoreUrl` (…/id1234567890), for the Smart App Banner. */
+export function appStoreId() {
+    return site.appStoreUrl?.match(/id(\d+)/)?.[1] ?? null;
+}
+
+/** Real app screens shown on the page, for the app's structured data. */
+const SCREENSHOTS = ['home', 'my-reading', 'birth-chart', 'match', 'personal-reading', 'booking'];
+
 /** hreflang region for Burmese: the site is written for Myanmar. */
 export function hreflang(lang) {
     return lang === 'my' ? 'my-MM' : lang;
@@ -42,6 +50,13 @@ export function structuredData(copy) {
         knowsLanguage: ['my', 'en'],
     };
 
+    const maker = {
+        '@type': 'Organization',
+        '@id': `${site.poweredByUrl}/#organization`,
+        name: 'OneZ Codes',
+        url: site.poweredByUrl,
+    };
+
     const website = {
         '@type': 'WebSite',
         '@id': siteId,
@@ -61,6 +76,7 @@ export function structuredData(copy) {
         inLanguage: ['my', 'en'],
         url,
         image,
+        screenshot: SCREENSHOTS.map((screen) => `${siteUrl}/screens/${screen}-720.webp`),
         featureList: features.groups.flatMap((group) => group.items.map((item) => item.title)),
         countriesSupported: 'MM',
         isAccessibleForFree: true,
@@ -71,6 +87,7 @@ export function structuredData(copy) {
             availability: 'https://schema.org/InStock',
         },
         publisher: { '@id': orgId },
+        creator: { '@id': maker['@id'] },
         ...(site.appStoreUrl ? { downloadUrl: site.appStoreUrl, installUrl: site.appStoreUrl } : {}),
     };
 
@@ -100,7 +117,7 @@ export function structuredData(copy) {
         })),
     };
 
-    return { '@context': 'https://schema.org', '@graph': [organization, website, webpage, app, questions] };
+    return { '@context': 'https://schema.org', '@graph': [organization, maker, website, webpage, app, questions] };
 }
 
 function upsertMeta(attr, key, content) {
@@ -130,6 +147,7 @@ export function applyDocumentSeo(copy) {
     upsertMeta('property', 'og:image:secure_url', image);
     upsertMeta('property', 'og:image:alt', seo.imageAlt);
     upsertMeta('property', 'og:locale', meta.locale);
+    upsertMeta('property', 'og:locale:alternate', meta.lang === 'en' ? 'my_MM' : 'en_US');
     upsertMeta('name', 'twitter:title', seo.title);
     upsertMeta('name', 'twitter:description', seo.shareDescription);
     upsertMeta('name', 'twitter:image', image);

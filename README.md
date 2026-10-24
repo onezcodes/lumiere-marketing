@@ -66,7 +66,9 @@ Capture with the app on its **sample data**: build without `ios/Config/Lumiere.l
 | `my-reading` | This month's reading for your sign |
 | `tarot` | A reader's pick-a-card spread on Home |
 | `birth-chart` | You › Your birth chart |
+| `matrix` | Birth chart › Matrix |
 | `match` | Birth chart › Destined partner |
+| `games` | Home › Play: a Who am I? table |
 | `readers` | Search › readers |
 | `reader-profile` | A reader's profile |
 | `personal-reading` | Confirm a personal reading |

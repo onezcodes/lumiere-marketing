@@ -7,7 +7,7 @@ export const site = {
     // robots.txt and the sitemap are all built from it. Rebuild after changing it.
     siteUrl: 'https://lumiere.onezcodes.com',
     appStoreUrl: null,
-    supportEmail: 'support@lumiere.app',
+    supportEmail: 'lumiere@onezcodes.com',
     privacyUrl: '#',
     termsUrl: '#',
     poweredByUrl: 'https://onezcodes.com',
@@ -19,4 +19,5 @@ export const pricing = {
     plusDiscountPercent: 5,
     readerSharePercent: 90,
     answerHours: 72,
+    giftCardFeePercent: 5,
 };

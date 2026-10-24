@@ -26,6 +26,33 @@ function useNarrow(query = '(max-width: 820px)') {
     return narrow;
 }
 
+/** Where a step lives in the app, then the tips worth knowing there. */
+function StepDetails({ item, whereLabel }) {
+    return (
+        <>
+            {item.where && (
+                <span className="guide-where">
+                    <Icon name="compass" size={14} />
+                    <span className="visually-hidden">{whereLabel}: </span>
+                    <Phrase text={item.where} />
+                </span>
+            )}
+            {item.tips?.length > 0 && (
+                <ul className="guide-tips">
+                    {item.tips.map((tip) => (
+                        <li key={tip}>
+                            <Icon name="check" size={14} />
+                            <span>
+                                <Phrase text={tip} />
+                            </span>
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </>
+    );
+}
+
 export default function AppGuide() {
     const { guide } = useLanguage().copy;
     const narrow = useNarrow();
@@ -33,6 +60,7 @@ export default function AppGuide() {
     const trackRef = useRef(null);
     const current = guide.items[active];
     const last = guide.items.length - 1;
+    const chapterStarts = guide.chapters.map((_, chapter) => guide.items.findIndex((item) => item.chapter === chapter));
 
     const go = (index) => {
         const next = Math.max(0, Math.min(last, index));
@@ -78,6 +106,11 @@ export default function AppGuide() {
                         <ol className="guide-list" role="tablist" aria-orientation="vertical" aria-label={guide.title}>
                             {guide.items.map((item, index) => (
                                 <li key={item.screen} role="presentation">
+                                    {chapterStarts[item.chapter] === index && (
+                                        <span className="guide-chapter" aria-hidden="true">
+                                            <Phrase text={guide.chapters[item.chapter]} />
+                                        </span>
+                                    )}
                                     <button
                                         type="button"
                                         role="tab"
@@ -93,9 +126,12 @@ export default function AppGuide() {
                                                 <Phrase text={item.title} />
                                             </span>
                                             {index === active && (
-                                                <span className="guide-item-body">
-                                                    <Phrase text={item.body} />
-                                                </span>
+                                                <>
+                                                    <span className="guide-item-body">
+                                                        <Phrase text={item.body} />
+                                                    </span>
+                                                    <StepDetails item={item} whereLabel={guide.where} />
+                                                </>
                                             )}
                                         </span>
                                     </button>
@@ -128,12 +164,19 @@ export default function AppGuide() {
 
                 {narrow && (
                     <div className="guide-mobile">
+                        <div className="guide-chapter-chips">
+                            {guide.chapters.map((chapter, index) => (
+                                <button key={chapter} type="button" aria-pressed={current.chapter === index} onClick={() => go(chapterStarts[index])}>
+                                    <Phrase text={chapter} />
+                                </button>
+                            ))}
+                        </div>
                         <ol ref={trackRef} className="guide-track" aria-label={guide.title}>
                             {guide.items.map((item, index) => (
                                 <li key={item.screen} className="guide-card">
                                     <PhoneFrame screen={item.screen} alt={item.title} className="guide-card-phone" />
                                     <span className="guide-number">
-                                        {guide.step} {index + 1}
+                                        {guide.step} {index + 1} · <Phrase text={guide.chapters[item.chapter]} />
                                     </span>
                                     <h3 className="guide-item-title">
                                         <Phrase text={item.title} />
@@ -141,6 +184,7 @@ export default function AppGuide() {
                                     <p className="guide-item-body">
                                         <Phrase text={item.body} />
                                     </p>
+                                    <StepDetails item={item} whereLabel={guide.where} />
                                 </li>
                             ))}
                         </ol>
