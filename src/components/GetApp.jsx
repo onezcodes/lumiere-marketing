@@ -1,6 +1,7 @@
 import { useLanguage } from '../i18n';
 import Phrase from './Phrase';
 import AppStoreButton from './AppStoreButton';
+import Countdown from './Countdown';
 import GooglePlayButton from './GooglePlayButton';
 import Starfield from './art/Starfield';
 import ZodiacWheel from './art/ZodiacWheel';
@@ -20,6 +21,7 @@ export default function GetApp() {
                 <p className="lead">
                     <Phrase text={copy.cta.iphone} />
                 </p>
+                <Countdown />
                 <div className="get-app-actions">
                     <AppStoreButton variant="spring" />
                     <GooglePlayButton />

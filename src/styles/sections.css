@@ -258,6 +258,191 @@ html[lang='my'] .hero-title {
     color: var(--mint);
     opacity: 0.9;
 }
+.countdown {
+    margin-top: 28px;
+}
+.countdown-label {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px;
+    margin: 0;
+    color: var(--spring);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+html[lang='my'] .countdown-label {
+    letter-spacing: 0;
+    text-transform: none;
+    font-size: 14px;
+}
+.countdown-zone {
+    color: var(--mint);
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    opacity: 0.8;
+}
+.countdown-units {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+.countdown-unit {
+    min-width: 76px;
+    padding: 12px 10px 10px;
+    border-radius: 16px;
+    background: rgba(31, 18, 25, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    text-align: center;
+}
+.countdown-value {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--white);
+}
+html[lang='my'] .countdown-value {
+    letter-spacing: 0;
+}
+.countdown-pending .countdown-value {
+    color: transparent;
+}
+.countdown-name {
+    display: block;
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mint);
+    opacity: 0.8;
+}
+html[lang='my'] .countdown-name {
+    letter-spacing: 0;
+    text-transform: none;
+    font-size: 13px;
+}
+.countdown-live {
+    margin: 28px 0 0;
+    color: var(--spring);
+    font-size: 18px;
+    font-weight: 700;
+}
+.countdown-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin-top: 14px;
+}
+.countdown-tool {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--mint);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.countdown-tool:hover {
+    color: var(--white);
+}
+.notify {
+    margin-top: 18px;
+    max-width: 460px;
+}
+.notify-label {
+    display: block;
+    color: var(--spring);
+    font-size: 14px;
+    font-weight: 700;
+}
+.notify-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+.notify-form input[name='contact'] {
+    flex: 1 1 200px;
+    min-width: 0;
+    min-height: 48px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(31, 18, 25, 0.45);
+    color: var(--white);
+    font: inherit;
+    font-size: 16px;
+}
+.notify-form input[name='contact']::placeholder {
+    color: rgba(218, 247, 220, 0.55);
+}
+.notify-form input[name='contact']:focus {
+    outline: 2px solid var(--spring);
+    outline-offset: 2px;
+}
+.notify-note,
+.notify-done {
+    margin: 10px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--mint);
+}
+.notify-note a {
+    color: var(--spring);
+}
+.notify-done {
+    color: var(--spring);
+    font-size: 15px;
+    font-weight: 700;
+}
+.get-app .countdown,
+.get-app .countdown-live {
+    margin: 0 0 32px;
+}
+.get-app .countdown-label,
+.get-app .countdown-units,
+.get-app .countdown-tools {
+    justify-content: center;
+}
+.get-app .notify {
+    margin-left: auto;
+    margin-right: auto;
+}
+.get-app .notify-label,
+.get-app .notify-note,
+.get-app .notify-done {
+    text-align: center;
+}
+@media (max-width: 520px) {
+    .countdown-units {
+        gap: 8px;
+    }
+    .countdown-unit {
+        min-width: 0;
+        flex: 1 1 calc(25% - 8px);
+        padding: 10px 4px 8px;
+    }
+    .countdown-value {
+        font-size: 22px;
+    }
+    .notify-form .btn {
+        width: 100%;
+    }
+}
 .hero-actions {
     display: flex;
     flex-wrap: wrap;

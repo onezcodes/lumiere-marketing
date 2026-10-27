@@ -60,6 +60,14 @@ const PATHS = {
             <path d="M3 10h18M8 3v4M16 3v4M8 14h2M14 14h2M8 17.5h2" />
         </>
     ),
+    share: (
+        <>
+            <circle cx="6" cy="12" r="2.2" />
+            <circle cx="17" cy="6.5" r="2.2" />
+            <circle cx="17" cy="17.5" r="2.2" />
+            <path d="m8 11 7-3.5M8 13l7 3.5" />
+        </>
+    ),
     chat: <path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-5 4V6a1 1 0 0 1 1-1Z" />,
     bag: (
         <>

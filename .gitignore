@@ -26,3 +26,6 @@ dist-ssr
 # Raw simulator captures (WebP copies live in public/screens)
 screens-raw/
 wallpapers-raw/
+
+# Launch-list signups saved by the dev server
+.data/

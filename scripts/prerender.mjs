@@ -20,7 +20,8 @@ const serverDir = path.join(root, 'dist-ssr');
 const { render, LANGUAGES } = await import(pathToFileURL(path.join(serverDir, 'entry-server.js')).href);
 const { siteUrl, pageUrl, shareImage, hreflang, structuredData, appStoreId, ROBOTS } = await import(pathToFileURL(path.join(root, 'src/seo.js')).href);
 
-const { pricing } = await import(pathToFileURL(path.join(root, 'src/content/site.js')).href);
+const { legalPage } = await import(pathToFileURL(path.join(root, 'src/legal-page.js')).href);
+const { pricing, site } = await import(pathToFileURL(path.join(root, 'src/content/site.js')).href);
 const template = await readFile(path.join(dist, 'index.html'), 'utf8');
 const langs = Object.values(LANGUAGES);
 
@@ -127,9 +128,38 @@ const urls = langs
         ].join('\n');
     })
     .join('\n');
+
+for (const kind of ['privacy', 'terms']) {
+    const file = path.join(dist, kind, 'index.html');
+    await mkdir(path.dirname(file), { recursive: true });
+    await writeFile(
+        file,
+        legalPage({
+            en: LANGUAGES.en,
+            my: LANGUAGES.my,
+            email: site.supportEmail,
+            robots: ROBOTS,
+            siteUrl,
+            kind,
+        }),
+    );
+    console.log(`wrote /${kind}/`);
+}
+
+const legalUrls = ['privacy', 'terms']
+    .map(
+        (kind) => `  <url>
+    <loc>${siteUrl}/${kind}/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>`,
+    )
+    .join('\n');
+
 await writeFile(
     path.join(dist, 'sitemap.xml'),
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n</urlset>\n`,
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n${legalUrls}\n</urlset>\n`,
 );
 
 const en = LANGUAGES.en;

@@ -5,6 +5,7 @@ import AppStoreButton from './AppStoreButton';
 import GooglePlayButton from './GooglePlayButton';
 import Icon from './Icon';
 import PhoneFrame from './PhoneFrame';
+import Countdown from './Countdown';
 import Starfield from './art/Starfield';
 import ZodiacWheel from './art/ZodiacWheel';
 
@@ -45,6 +46,7 @@ export default function Hero() {
                     <p className="hero-subtitle">
                         <Phrase text={hero.subtitle} />
                     </p>
+                    <Countdown />
                     <div className="hero-actions">
                         <AppStoreButton variant="spring" />
                         <GooglePlayButton />

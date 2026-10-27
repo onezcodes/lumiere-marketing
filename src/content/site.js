@@ -9,8 +9,8 @@ export const site = {
     appStoreUrl: null,
     playStoreUrl: null,
     supportEmail: 'lumiere@onezcodes.com',
-    privacyUrl: '#',
-    termsUrl: '#',
+    privacyUrl: '/privacy/',
+    termsUrl: '/terms/',
     poweredByUrl: 'https://onezcodes.com',
 };
 
