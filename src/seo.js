@@ -1,4 +1,5 @@
 import { site } from './content/site.js';
+import { SCREENS_VERSION } from './data/screens.js';
 
 /** Public origin, no trailing slash. Canonicals, share images, the sitemap and llms.txt all use it. */
 export const siteUrl = site.siteUrl.replace(/\/$/, '');
@@ -76,7 +77,7 @@ export function structuredData(copy) {
         inLanguage: ['my', 'en'],
         url,
         image,
-        screenshot: SCREENSHOTS.map((screen) => `${siteUrl}/screens/${screen}-720.webp`),
+        screenshot: SCREENSHOTS.map((screen) => `${siteUrl}/screens/${screen}-720.webp?v=${SCREENS_VERSION}`),
         featureList: features.groups.flatMap((group) => group.items.map((item) => item.title)),
         countriesSupported: 'MM',
         isAccessibleForFree: true,

@@ -48,7 +48,7 @@ Like the app's Appearance setting, the site follows the device until someone cho
 
 ## Screenshots
 
-Real screens from the iOS app, in `public/screens/<name>-360.webp` and `-720.webp`, inside a CSS iPhone frame (a branded placeholder shows if one is missing).
+Real screens from the iOS app, in `public/screens/<name>-360.webp` and `-720.webp`, inside a CSS iPhone frame (a branded placeholder shows if one is missing). After recapturing, bump `SCREENS_VERSION` in `src/data/screens.js`: Cloudflare and browsers keep `/screens/*` for a week.
 
 Capture with the app on its **sample data**: build without `ios/Config/Lumiere.local.xcconfig` (empty `API_BASE_URL`), so no real account or server is involved.
 

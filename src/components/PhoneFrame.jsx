@@ -1,6 +1,6 @@
 import Phrase from './Phrase';
 import { useEffect, useState } from 'react';
-import { DARK_SCREENS } from '../data/screens';
+import { DARK_SCREENS, SCREENS_VERSION } from '../data/screens';
 import { useTheme } from '../theme';
 import { useLanguage } from '../i18n';
 import Icon from './Icon';
@@ -19,6 +19,8 @@ export default function PhoneFrame({ screen, alt, className = '', eager = false,
     // A new picture (theme switched) gets a fresh try before falling back to the placeholder.
     useEffect(() => setMissing(false), [path]);
     const [small, large] = sizes;
+    // Only app screenshots are versioned; other callers pass their own `base`.
+    const query = base ? '' : `?v=${SCREENS_VERSION}`;
 
     return (
         <div className={`phone ${className}`}>
@@ -36,8 +38,8 @@ export default function PhoneFrame({ screen, alt, className = '', eager = false,
                 ) : (
                     <img
                         key={path}
-                        src={`${path}-${small}.webp`}
-                        srcSet={`${path}-${small}.webp ${small}w, ${path}-${large}.webp ${large}w`}
+                        src={`${path}-${small}.webp${query}`}
+                        srcSet={`${path}-${small}.webp${query} ${small}w, ${path}-${large}.webp${query} ${large}w`}
                         sizes="(max-width: 600px) 200px, 300px"
                         width="360"
                         height="782"

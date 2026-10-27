@@ -726,9 +726,6 @@ html[lang='my'] .highlight-title {
     .highlight-visual .phone {
         width: min(250px, 70%);
     }
-    .highlight-visual .phone.highlight-phone-back {
-        width: min(200px, 52%);
-    }
 }
 
 /* ---------- Features ---------- */
@@ -1392,6 +1389,9 @@ li:first-child > .guide-chapter {
         display: none;
     }
     .guide-card {
+        /* Holds the visually-hidden "Where" label; without it the label is placed against the
+           page, escapes the track's scroll clip and widens the page on phones. */
+        position: relative;
         flex: 0 0 min(78vw, 300px);
         scroll-snap-align: start;
         padding: 20px;
@@ -2622,6 +2622,15 @@ button.bday-title:hover {
     width: min(260px, 62%);
     transform: translate(-82%, -46%) rotate(-7deg);
     opacity: 0.94;
+}
+@media (max-width: 820px) {
+    .highlight-visual .phone.highlight-phone-back {
+        width: min(200px, 52%);
+        transform: translate(-80%, -46%) rotate(-7deg);
+    }
+    .highlight-visual.has-back .highlight-phone-front {
+        transform: translateX(10%) rotate(3deg);
+    }
 }
 .orbit-planet {
     position: absolute;
