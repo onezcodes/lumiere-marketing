@@ -1,6 +1,7 @@
 import { useLanguage } from '../i18n';
 import Phrase from './Phrase';
 import AppStoreButton from './AppStoreButton';
+import GooglePlayButton from './GooglePlayButton';
 import Starfield from './art/Starfield';
 import ZodiacWheel from './art/ZodiacWheel';
 
@@ -19,7 +20,10 @@ export default function GetApp() {
                 <p className="lead">
                     <Phrase text={copy.cta.iphone} />
                 </p>
-                <AppStoreButton variant="spring" />
+                <div className="get-app-actions">
+                    <AppStoreButton variant="spring" />
+                    <GooglePlayButton />
+                </div>
             </div>
         </section>
     );

@@ -9,7 +9,7 @@ export default {
         imageAlt: 'Lumière, Myanmar astrology on iPhone: a monthly reading, birth chart and Mahabote',
     },
     nav: { features: 'Features', wallpapers: 'Wallpapers', tarot: 'Ask the cards', guide: 'App guide', readers: 'For readers', faq: 'FAQ', menu: 'Menu', close: 'Close' },
-    cta: { appStore: 'Download on the App Store', soon: 'Coming soon to the App Store', iphone: 'For iPhone', getApp: 'Get the app' },
+    cta: { appStore: 'Download on the App Store', soon: 'Coming soon to the App Store', playStore: 'Get it on Google Play', playSoon: 'Coming soon to Google Play', iphone: 'For iPhone, and soon Android', getApp: 'Get the app' },
     hero: {
         eyebrow: 'Astrology for Myanmar, on iPhone',
         title: 'Your stars, read by people who know them.',
@@ -72,13 +72,15 @@ export default {
         items: [
             {
                 screen: 'my-reading',
-                tag: 'Every month',
-                title: 'A reading written for your sign',
-                body: 'Tell us your birthday once. Each month, readers publish a reading for every sign, and yours is waiting at the top of Home.',
-                points: ['Written by readers for each of the 12 signs', 'Lumière Today: short daily notes for your sign and element', 'Pick a card for a quick prediction'],
+                backScreen: 'lumiere-element',
+                tag: 'Every day',
+                title: 'Fresh words for your sign, every day',
+                body: 'Tell us your birthday once. Lumière writes a short post for every sign and element each day, and readers add a full reading every month — yours waits at the top of Home.',
+                points: ['Lumière Today: a new post for each of the 12 signs and 4 elements, every day', 'A monthly reading from real readers for your sign', 'Pick a card for a quick prediction'],
             },
             {
                 screen: 'birth-chart',
+                backScreen: 'timing',
                 tag: 'Your chart',
                 title: 'Your chart for life, this year and today',
                 body: 'See your wheel, your Big Three, your Destiny Matrix and your Myanmar birth day — then what it says about work, money, health, family, love and where you’ll live, in plain words.',
@@ -91,6 +93,7 @@ export default {
             },
             {
                 screen: 'match',
+                backScreen: 'match-matrix',
                 tag: 'Match',
                 title: 'Two birthdays, one reading',
                 body: 'Compare yourself with a partner, a friend or a crush. Lumière shows how your signs, birth days and Destiny Matrix fit together, and which days are good for you both.',
@@ -297,9 +300,9 @@ export default {
             {
                 chapter: 1,
                 screen: 'my-reading',
-                title: 'Read your month',
+                title: 'Read today’s post',
                 where: 'Top of Home, or You › My Reading',
-                body: 'Open the full reading. Like it, comment, repost it, or share it as a card.',
+                body: 'Lumière’s post for your sign sits near the top of Home every day, under your monthly reading from readers. Open either to read it in full, then like, comment, repost or share it as a card.',
                 tips: [
                     'Tap the bookmark to keep a reading in your private Saved tab.',
                     'A locked reading opens with credits, Plus, or by watching a short ad.',
@@ -319,10 +322,10 @@ export default {
                 screen: 'birth-chart',
                 title: 'Explore your chart',
                 where: 'You › Birth chart',
-                body: 'Four tabs: For life, Matrix, This year and Today. Add a second birthday from Home to see a match.',
+                body: 'Two tabs at the top: At birth, with For life and your Matrix, and Timing, with this year and today. Add a second birthday from Home to see a match.',
                 tips: [
                     'For life: your Big Three, work, money, health, family, where you’ll live, destined partner and a life timeline.',
-                    'Today: what the planets are doing to you now, retrogrades, and your lucky numbers and colours.',
+                    'Timing: what the planets are doing to you now, retrogrades, and your lucky numbers and colours.',
                     'This year and This month in full come with Plus.',
                     'Tap save at the top to share any part as a 9:16 story poster.',
                 ],
@@ -337,6 +340,14 @@ export default {
             },
             {
                 chapter: 1,
+                screen: 'timing',
+                title: 'See your timing',
+                where: 'You › Birth chart › Timing',
+                body: 'What the sky is doing to your chart now. Today shows the Moon’s sign, a short reading for the day and the planets touching your chart; This year shows the slow planets and the months they matter most.',
+                tips: ['Each active planet shows when it began, peaks and ends, with a reader one tap away.', 'Today also gives your lucky numbers and colours, and how love, work, money and mood look.'],
+            },
+            {
+                chapter: 1,
                 screen: 'match',
                 title: 'Check your match',
                 where: 'Home › Birth chart match',
@@ -346,6 +357,14 @@ export default {
                     'The written reading, Moon and Rising and good days together come with Plus.',
                     'Share a match card with them when you’re done.',
                 ],
+            },
+            {
+                chapter: 1,
+                screen: 'match-mahabote',
+                title: 'Compare your Mahabote',
+                where: 'Birth chart match › မဟာဘုတ်',
+                body: 'The Myanmar way to match: the weekday you were each born on, its planet and direction, and how well the two days get along.',
+                tips: ['Each birth day gets its planet, direction and a short note about the person.', 'Days that are neither friends nor enemies still work — it comes down to effort.'],
             },
             {
                 chapter: 1,
@@ -462,7 +481,7 @@ export default {
                 q: 'Can I look around without an account?',
                 a: 'Yes. Continue as a guest with just your birthday. A guest account stays on that phone and has no password, so save it with your email to keep it. Guests don’t get the free Plus week, and messages and bookings need a verified email.',
             },
-            { q: 'Is there an Android app?', a: 'Not yet. Lumière is on iPhone first.' },
+            { q: 'Is there an Android app?', a: 'Coming soon. Lumière is on iPhone first, and the Android app is on its way to Google Play.' },
             { q: 'How do I buy credits?', a: `Choose a pack in the app, pay by transfer, and upload the slip. One credit is ${p.mmkPerCredit} MMK.` },
             { q: 'What if a reader doesn’t answer?', a: `Readers have ${p.answerHours} hours. If they don’t answer in time, your credits go back to your balance.` },
             {

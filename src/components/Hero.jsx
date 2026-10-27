@@ -2,6 +2,7 @@ import { SIGNS, glyph } from '../data/zodiac';
 import { useLanguage } from '../i18n';
 import Phrase from './Phrase';
 import AppStoreButton from './AppStoreButton';
+import GooglePlayButton from './GooglePlayButton';
 import Icon from './Icon';
 import PhoneFrame from './PhoneFrame';
 import Starfield from './art/Starfield';
@@ -46,6 +47,7 @@ export default function Hero() {
                     </p>
                     <div className="hero-actions">
                         <AppStoreButton variant="spring" />
+                        <GooglePlayButton />
                         <a className="btn btn-ghost" href="#tarot">
                             <Icon name="cards" size={20} /> {copy.tarot.title}
                         </a>

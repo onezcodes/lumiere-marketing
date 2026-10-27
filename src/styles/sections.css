@@ -726,6 +726,9 @@ html[lang='my'] .highlight-title {
     .highlight-visual .phone {
         width: min(250px, 70%);
     }
+    .highlight-visual .phone.highlight-phone-back {
+        width: min(200px, 52%);
+    }
 }
 
 /* ---------- Features ---------- */
@@ -2607,6 +2610,19 @@ button.bday-title:hover {
 .highlight-visual .phone {
     z-index: 1;
 }
+/* A second screen tilted behind the main one, like the hero pair. */
+.highlight-visual.has-back .highlight-phone-front {
+    transform: translateX(14%) rotate(3deg);
+    z-index: 2;
+}
+.highlight-visual .phone.highlight-phone-back {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(260px, 62%);
+    transform: translate(-82%, -46%) rotate(-7deg);
+    opacity: 0.94;
+}
 .orbit-planet {
     position: absolute;
     left: 50%;
@@ -2695,6 +2711,12 @@ button.bday-title:hover {
         0 0 0 8px rgba(255, 255, 255, 0.06),
         0 0 60px rgba(158, 228, 147, 0.35);
     margin-bottom: 28px;
+}
+.get-app-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
 }
 .get-app .lead {
     margin-bottom: 30px;

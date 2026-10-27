@@ -24,14 +24,15 @@ export default function Highlights() {
                 <div className="highlights">
                     {highlights.items.map((item, index) => (
                         <Reveal key={item.screen} className={`highlight ${index % 2 ? 'is-flipped' : ''}`}>
-                            <div className="highlight-visual">
+                            <div className={`highlight-visual ${item.backScreen ? 'has-back' : ''}`}>
                                 <span className="highlight-glow" aria-hidden="true" />
                                 <span
                                     className="orbit-planet"
                                     style={{ '--planet': ['var(--water)', 'var(--fire)', 'var(--air)', 'var(--earth)'][index % 4], animationDuration: `${36 + index * 8}s` }}
                                     aria-hidden="true"
                                 />
-                                <PhoneFrame screen={item.screen} alt={item.title} />
+                                {item.backScreen && <PhoneFrame screen={item.backScreen} alt="" className="highlight-phone-back" />}
+                                <PhoneFrame screen={item.screen} alt={item.title} className="highlight-phone-front" />
                             </div>
                             <div className="highlight-copy">
                                 <span className="chip">

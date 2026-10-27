@@ -63,11 +63,15 @@ Capture with the app on its **sample data**: build without `ios/Config/Lumiere.l
 | `confirm-sign` | This is your sign |
 | `welcome-plus` | 7 days of Plus, free |
 | `home` | Home |
-| `my-reading` | This month's reading for your sign |
+| `my-reading` | Today's Lumiere post for a sign (Libra) |
+| `lumiere-element` | Today's Lumiere post for an element (Fire), behind `my-reading` in Highlights |
 | `tarot` | A reader's pick-a-card spread on Home |
 | `birth-chart` | You › Your birth chart |
+| `timing` | You › Birth chart › Timing › Today (behind `birth-chart` in Highlights) |
 | `matrix` | Birth chart › Matrix |
-| `match` | Birth chart › Destined partner |
+| `match` | Home › Check your match: the overview |
+| `match-mahabote` | The same match › မဟာဘုတ် tab |
+| `match-matrix` | The same match › Matrix tab (behind `match` in Highlights) |
 | `games` | Home › Play: a Who am I? table |
 | `readers` | Search › readers |
 | `reader-profile` | A reader's profile |

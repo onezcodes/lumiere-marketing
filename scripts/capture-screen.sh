@@ -4,7 +4,7 @@
 set -euo pipefail
 
 name="${1:-}"
-names="onboarding confirm-sign home my-reading tarot birth-chart match readers reader-profile personal-reading booking messages credits studio"
+names="onboarding confirm-sign welcome-plus home my-reading lumiere-element tarot birth-chart matrix timing match match-matrix match-mahabote games readers reader-profile personal-reading booking messages credits studio"
 if [[ -z "$name" ]] || [[ " $names " != *" $name "* ]]; then
     echo "Usage: npm run screen -- <name>"
     echo "Names: $names"

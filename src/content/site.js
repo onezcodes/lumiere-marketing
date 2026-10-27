@@ -1,5 +1,5 @@
 /**
- * Site-wide settings. Set `appStoreUrl` when the app is live; until then the buttons say
+ * Site-wide settings. Set `appStoreUrl` / `playStoreUrl` when each store listing is live; until then the buttons say
  * "Coming soon". Prices come from the app's server, so the numbers live here only, in one place.
  */
 export const site = {
@@ -7,6 +7,7 @@ export const site = {
     // robots.txt and the sitemap are all built from it. Rebuild after changing it.
     siteUrl: 'https://lumiere.onezcodes.com',
     appStoreUrl: null,
+    playStoreUrl: null,
     supportEmail: 'lumiere@onezcodes.com',
     privacyUrl: '#',
     termsUrl: '#',
