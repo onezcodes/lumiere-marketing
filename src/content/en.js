@@ -11,7 +11,7 @@ export default {
     nav: { features: 'Features', wallpapers: 'Wallpapers', tarot: 'Ask the cards', guide: 'App guide', readers: 'For readers', faq: 'FAQ', menu: 'Menu', close: 'Close' },
     cta: { appStore: 'Download on the App Store', soon: 'Coming soon to the App Store', playStore: 'Get it on Google Play', playSoon: 'Coming soon to Google Play', iphone: 'For iPhone, and soon Android', getApp: 'Get the app' },
     hero: {
-        eyebrow: 'Astrology for Myanmar, on iPhone',
+        eyebrow: 'Astrology for Myanmar, just in a minute',
         title: 'Your stars, read by people who know them.',
         subtitle: 'Monthly readings for your sign, your full birth chart, Destiny Matrix and Mahabote, party games for your friends, and real readers you can ask anything — all in one calm app.',
         floats: { reading: 'Your month · Libra', tarot: 'Yes · The Star', mahabote: 'Mahabote · Tiger' },
@@ -42,6 +42,24 @@ export default {
         mail: 'Your email app has a message ready. Send it and you’re on the list.',
         note: 'Only to say when Lumière opens.',
     },
+    beta: {
+        title: 'Try Lumière early',
+        intro: 'Lumière is in testing on iPhone. Install the test version through TestFlight, Apple’s free app for trying apps before they reach the App Store.',
+        button: 'Install on iPhone',
+        soon: 'Opening soon',
+        soonNote: 'The test version is waiting for Apple’s check. Come back in a day or two.',
+        desktop: 'Open this page on your iPhone to install.',
+        stepsTitle: 'How it works',
+        steps: [
+            'Tap Install on iPhone. If you don’t have TestFlight yet, the App Store opens it first: tap Get, then come back and tap Install on iPhone again.',
+            'In TestFlight, tap Accept, then Install.',
+            'Open Lumière and sign up. Everything you see is the real app on the real server.',
+        ],
+        testFlight: 'Get TestFlight from the App Store',
+        needs: 'Needs an iPhone with iOS 18 or later.',
+        feedback: 'Found something wrong? Take a screenshot in Lumière and TestFlight asks if you want to send it to us. Or email lumiere@onezcodes.com.',
+        expiry: 'Each test version works for 90 days. TestFlight updates it for you when we send a new one.',
+    },
     legal: {
         back: 'Lumière',
         privacy: {
@@ -52,6 +70,24 @@ export default {
                 'Lumière (OneZ Codes) keeps the list. To be removed, or to ask what we have for you, email lumiere@onezcodes.com. If the list cannot be saved from the page, your email app opens a message to that same address for you to send.',
                 'The card draw and the birthday lookup run in your browser. What you type there is not sent to us.',
                 'Your language and your light or dark choice are saved on your device only.',
+            ],
+        },
+        appPrivacy: {
+            title: 'App privacy',
+            paragraphs: [
+                'This policy covers the Lumière iPhone app and its service, run by OneZ Codes. Updated 1 November 2026. Questions or requests: lumiere@onezcodes.com.',
+                'Your account: a username, a password, and your date of birth, which gives your sign. You can add an email or phone number (for sign-in codes and password reset), a birth time and birthplace (for your birth chart), a profile photo, and a short bio. You can also start as a guest; a guest account is tied to your phone.',
+                'What you make in the app: posts, comments, messages and voice messages, photos you upload, questions you send to readers, answers to quick questions, match checks, game answers, and feedback. Readers also keep their profile, prices, and payout details (bank or wallet) so we can pay them.',
+                'Money: credits bought, spent, earned and refunded, plans, gift cards and coupons. When you pay by bank transfer, we keep the payment slip picture you upload so staff can approve it. We never see or store card numbers.',
+                'Your phone and use of the app: the app type and version, iOS version, a device id the app creates, when you open the app, sign in and make changes, and the IP address of those requests. We use this to keep accounts safe, stop abuse, give one welcome week per phone, and fix problems. This activity log is kept for up to 365 days.',
+                'Readings written with AI: to write personal readings, chart and match readings and daily posts, we send the details they need (such as birth dates, signs, chart positions and your answers) to OpenAI or Anthropic, who process them for us. Your password, email, phone number and payments are never sent.',
+                'Calls: booked sessions run as voice or video calls through Agora, which carries the call. We do not record calls.',
+                'Ads: members on Basic see ads from Google AdMob, and anyone can watch an ad to unlock something. Google may use information about your device to show and measure ads, and asks for your consent where the law requires it. The app does not ask to track you across other companies’ apps and websites.',
+                'Who sees what: other members see your username, photo, bio, sign and what you post publicly. A reader you pay sees your username, sign and what you send them; a reader you book also sees the session. Readers do not see your email, phone number, date of birth or payments. Lumière staff can see account details to answer support requests, approve payments and handle reports.',
+                'Others who handle data for us: our hosting provider, email and SMS senders for codes, OpenAI and Anthropic for AI readings, Agora for calls, and Google AdMob for ads. We share data with authorities only when the law requires it. We do not sell personal data.',
+                'Your choices: edit your profile in Settings, choose who sees your answers, block or report anyone, switch off news emails, and delete your account yourself in Settings. Deleting removes your profile, posts, messages, unlocked readings and remaining credits. Purchase records are kept as long as accounting rules require, and activity log entries expire on their own.',
+                'Lumière is not for children under 13. Readings are for reflection and fun, not medical, legal or financial advice.',
+                'When this policy changes, we update the date above and tell you in the app before the change applies.',
             ],
         },
         terms: {

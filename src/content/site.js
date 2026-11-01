@@ -8,6 +8,9 @@ export const site = {
     siteUrl: 'https://lumiere.onezcodes.com',
     appStoreUrl: null,
     playStoreUrl: null,
+    // TestFlight public link for /beta/ (https://testflight.apple.com/join/…). Null shows "Opening soon"
+    // until Apple approves the first external build.
+    testFlightUrl: null,
     supportEmail: 'lumiere@onezcodes.com',
     privacyUrl: '/privacy/',
     termsUrl: '/terms/',

@@ -21,6 +21,7 @@ const { render, LANGUAGES } = await import(pathToFileURL(path.join(serverDir, 'e
 const { siteUrl, pageUrl, shareImage, hreflang, structuredData, appStoreId, ROBOTS } = await import(pathToFileURL(path.join(root, 'src/seo.js')).href);
 
 const { legalPage } = await import(pathToFileURL(path.join(root, 'src/legal-page.js')).href);
+const { betaPage } = await import(pathToFileURL(path.join(root, 'src/beta-page.js')).href);
 const { pricing, site } = await import(pathToFileURL(path.join(root, 'src/content/site.js')).href);
 const template = await readFile(path.join(dist, 'index.html'), 'utf8');
 const langs = Object.values(LANGUAGES);
@@ -129,7 +130,7 @@ const urls = langs
     })
     .join('\n');
 
-for (const kind of ['privacy', 'terms']) {
+for (const kind of ['privacy', 'app-privacy', 'terms']) {
     const file = path.join(dist, kind, 'index.html');
     await mkdir(path.dirname(file), { recursive: true });
     await writeFile(
@@ -146,7 +147,15 @@ for (const kind of ['privacy', 'terms']) {
     console.log(`wrote /${kind}/`);
 }
 
-const legalUrls = ['privacy', 'terms']
+// TestFlight install page. Not in the sitemap: it is noindex and only for people we send there.
+await mkdir(path.join(dist, 'beta'), { recursive: true });
+await writeFile(
+    path.join(dist, 'beta', 'index.html'),
+    betaPage({ en: LANGUAGES.en, my: LANGUAGES.my, email: site.supportEmail, siteUrl, testFlightUrl: site.testFlightUrl }),
+);
+console.log('wrote /beta/');
+
+const legalUrls = ['privacy', 'app-privacy', 'terms']
     .map(
         (kind) => `  <url>
     <loc>${siteUrl}/${kind}/</loc>

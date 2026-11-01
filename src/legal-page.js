@@ -2,27 +2,28 @@ function escapeAttr(value) {
     return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-/** Privacy or terms, in English and Burmese, as one HTML document. */
+/** Website privacy, app privacy or terms, in English and Burmese, as one HTML document. */
 export function legalPage({ en, my, email, robots, siteUrl, kind }) {
+    const copyKey = (name) => (name === 'app-privacy' ? 'appPrivacy' : name);
     const safeEmail = escapeAttr(email);
     const htmlText = (value) => escapeAttr(value).replaceAll(safeEmail, `<a href="mailto:${safeEmail}">${safeEmail}</a>`);
     const article = (copy, lang) => {
-        const block = copy.legal[kind];
+        const block = copy.legal[copyKey(kind)];
         return `<article id="${lang}" lang="${lang}">
             <p class="legal-lang">${lang === 'en' ? 'English' : 'မြန်မာ'}</p>
             <h1>${escapeAttr(block.title)}</h1>
             ${block.paragraphs.map((paragraph) => `<p>${htmlText(paragraph)}</p>`).join('\n            ')}
         </article>`;
     };
-    const other = kind === 'privacy' ? 'terms' : 'privacy';
+    const others = ['privacy', 'app-privacy', 'terms'].filter((other) => other !== kind);
 
     return `<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>${escapeAttr(en.legal[kind].title)} · Lumière</title>
-    <meta name="description" content="${escapeAttr(en.legal[kind].paragraphs[0])}" />
+    <title>${escapeAttr(en.legal[copyKey(kind)].title)} · Lumière</title>
+    <meta name="description" content="${escapeAttr(en.legal[copyKey(kind)].paragraphs[0])}" />
     <meta name="robots" content="${escapeAttr(robots)}" />
     <link rel="canonical" href="${siteUrl}/${kind}/" />
     <link rel="icon" href="/favicon.ico" />
@@ -57,7 +58,7 @@ export function legalPage({ en, my, email, robots, siteUrl, kind }) {
         <nav>
             <a href="#en">English</a>
             <a href="#my">မြန်မာ</a>
-            <a href="/${other}/">${escapeAttr(en.legal[other].title)}</a>
+            ${others.map((other) => `<a href="/${other}/">${escapeAttr(en.legal[copyKey(other)].title)}</a>`).join('\n            ')}
         </nav>
     </header>
     <main>

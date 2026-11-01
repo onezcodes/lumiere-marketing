@@ -14,7 +14,8 @@ npm run build    # dist/
 
 | What | File |
 |---|---|
-| App Store link, support email, privacy/terms links | `src/content/site.js` (`site`) |
+| App Store link, TestFlight link, support email, privacy/terms links | `src/content/site.js` (`site`) |
+| TestFlight install page `/beta/` (noindex, not in the sitemap) | `src/beta-page.js`, copy in `beta` of `en.js` / `my.js` |
 | Prices and credit numbers (one place only) | `src/content/site.js` (`pricing`) |
 | English copy | `src/content/en.js` |
 | Burmese copy (standard Unicode, not Zawgyi) | `src/content/my.js` |
