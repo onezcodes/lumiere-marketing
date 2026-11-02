@@ -45,6 +45,10 @@ export default {
     beta: {
         title: 'Try Lumière early',
         intro: 'Lumière is in testing on iPhone. Install the test version through TestFlight, Apple’s free app for trying apps before they reach the App Store.',
+        // Card under the intro that links to the home page.
+        about: 'What is Lumière?',
+        aboutNote: 'Myanmar astrology on iPhone: monthly readings, birth charts, Mahabote, tarot, party games and real readers.',
+        aboutLink: 'See the full app',
         button: 'Install on iPhone',
         soon: 'Opening soon',
         soonNote: 'The test version is waiting for Apple’s check. Come back in a day or two.',

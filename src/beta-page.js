@@ -29,6 +29,10 @@ export function betaPage({ en, my, email, siteUrl, testFlightUrl }) {
             <p class="intro">${escapeAttr(beta.intro)}</p>
             ${action}
             <p class="needs">${escapeAttr(beta.needs)}</p>
+            <a class="about" href="${escapeAttr(copy.meta.path)}">
+                <span class="about-text"><strong>${escapeAttr(beta.about)}</strong><span>${escapeAttr(beta.aboutNote)}</span><span class="about-link">${escapeAttr(beta.aboutLink)}</span></span>
+                <span class="about-arrow" aria-hidden="true">→</span>
+            </a>
             <h2>${escapeAttr(beta.stepsTitle)}</h2>
             <ol>
                 ${beta.steps.map((step) => `<li>${escapeAttr(step)}</li>`).join('\n                ')}
@@ -83,6 +87,14 @@ export function betaPage({ en, my, email, siteUrl, testFlightUrl }) {
         p { margin: 0 0 14px; }
         a { color: #9ee493; }
         .intro { color: #e3d6df; }
+        .about { display: flex; align-items: center; gap: 16px; margin: 28px 0 8px; padding: 16px 18px; border: 1.5px solid #9ee493; border-radius: 16px; background: rgba(158, 228, 147, 0.08); color: #f2e9ef; text-decoration: none; }
+        .about:hover { background: rgba(158, 228, 147, 0.14); }
+        .about:active { transform: scale(0.98); }
+        .about-text { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
+        .about-text strong { font-size: 19px; }
+        .about-text span { color: #e3d6df; font-size: 15px; }
+        .about-text .about-link { color: #9ee493; font-weight: 600; }
+        .about-arrow { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #9ee493; color: #2d1b29; font-size: 20px; font-weight: 700; }
         .install { display: flex; align-items: center; justify-content: center; gap: 12px; text-align: center; margin: 24px 0 10px; padding: 16px 20px; border-radius: 16px; background: #9ee493; color: #2d1b29; font-weight: 700; font-size: 18px; text-decoration: none; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3); }
         .install:active { transform: scale(0.98); }
         .install.is-first { background: #f2e9ef; margin-top: 28px; }
