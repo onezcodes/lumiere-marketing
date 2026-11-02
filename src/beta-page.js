@@ -50,10 +50,21 @@ export function betaPage({ en, my, email, siteUrl, testFlightUrl }) {
     <link rel="canonical" href="${siteUrl}/beta/" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lumière" />
     <meta property="og:title" content="${escapeAttr(en.beta.title)} · Lumière" />
     <meta property="og:description" content="${escapeAttr(en.beta.intro)}" />
     <meta property="og:url" content="${siteUrl}/beta/" />
     <meta property="og:image" content="${siteUrl}/og/share-en.jpg" />
+    <meta property="og:image:secure_url" content="${siteUrl}/og/share-en.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Lumière, Myanmar astrology on iPhone" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escapeAttr(en.beta.title)} · Lumière" />
+    <meta name="twitter:description" content="${escapeAttr(en.beta.intro)}" />
+    <meta name="twitter:image" content="${siteUrl}/og/share-en.jpg" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&amp;family=Noto+Sans+Myanmar:wght@400;600;700&amp;display=swap" />
     <style>
         :root { color-scheme: dark; }
