@@ -54,13 +54,13 @@ export default {
         desktop: 'ထည့်ဖို့ ဒီစာမျက်နှာကို iPhone မှာ ဖွင့်ပါ။',
         stepsTitle: 'ဘယ်လို ထည့်ရမလဲ',
         steps: [
-            '“App Store မှာ TestFlight ကို ရယူပါ” ကို နှိပ်ပြီး App Store ထဲမှာ Get ကို နှိပ်ပါ။ TestFlight ရှိပြီးသားဆိုရင် ဒီအဆင့်ကို ကျော်ပါ။',
+            '“TestFlight ကို ရယူပါ” ကို နှိပ်ပြီး App Store ထဲမှာ Get ကို နှိပ်ပါ။ TestFlight ရှိပြီးသားဆိုရင် ဒီအဆင့်ကို ကျော်ပါ။',
             'ဒီစာမျက်နှာကို ပြန်လာပြီး “iPhone မှာ ထည့်ရန်” ကို နှိပ်ပါ။',
             'TestFlight ထဲမှာ Accept ကို နှိပ်ပြီး Install ကို နှိပ်ပါ။',
         ],
         // Button 1, above Install on iPhone. Links to TestFlight on the App Store.
-        testFlight: 'App Store မှာ TestFlight ကို ရယူပါ',
-        testFlightNote: 'Apple ရဲ့ အခမဲ့ အက်ပ်ပါ။ TestFlight ရှိပြီးသားဆိုရင် အဆင့် ၂ ကို တန်းသွားပါ။',
+        testFlight: 'TestFlight ကို ရယူပါ',
+        testFlightNote: 'App Store မှာ အခမဲ့ ရပါတယ်။ ရှိပြီးသားဆိုရင် အဆင့် ၂ ကို သွားပါ။',
         needs: 'iOS 18 နဲ့ အထက်ရှိတဲ့ iPhone လိုပါတယ်။',
         feedback: 'မှားနေတာ တွေ့ရင် Lumière ထဲမှာ screenshot ရိုက်လိုက်ပါ။ TestFlight က ကျွန်ုပ်တို့ဆီ ပို့မလား မေးပါလိမ့်မယ်။ ဒါမှမဟုတ် lumiere@onezcodes.com ကို အီးမေးလ်ပို့ပါ။',
         expiry: 'စမ်းသပ်ဗားရှင်းတစ်ခုစီကို ရက် ၉၀ သုံးနိုင်ပါတယ်။ ဗားရှင်းအသစ် ပို့ရင် TestFlight က အလိုအလျောက် အသစ်ပြောင်းပေးပါတယ်။',
