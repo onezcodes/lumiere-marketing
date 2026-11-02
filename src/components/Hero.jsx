@@ -67,8 +67,8 @@ export default function Hero() {
                 </div>
                 <div className="hero-visual">
                     <ZodiacWheel className="hero-wheel" />
-                    <PhoneFrame screen="home" alt={lang === 'my' ? 'Lumière ပင်မစာမျက်နှာ' : 'Lumière home screen'} className="hero-phone hero-phone-back" eager />
-                    <PhoneFrame screen="my-reading" alt={lang === 'my' ? 'Lumière လစဉ်ဟောစာတမ်း' : 'Lumière monthly reading'} className="hero-phone hero-phone-front" eager />
+                    <PhoneFrame screen="my-reading" alt={lang === 'my' ? 'Lumière လစဉ်ဟောစာတမ်း' : 'Lumière monthly reading'} className="hero-phone hero-phone-back" eager />
+                    <PhoneFrame screen="home" alt={lang === 'my' ? 'Lumière ပင်မစာမျက်နှာ' : 'Lumière home screen'} className="hero-phone hero-phone-front" eager />
                     <span className="glass-chip glass-chip-1">
                         <span className="glass-dot" style={{ background: 'var(--air)' }} />
                         <span>{hero.floats.reading}</span>
