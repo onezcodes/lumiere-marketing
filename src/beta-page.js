@@ -14,10 +14,15 @@ export function betaPage({ en, my, email, siteUrl, testFlightUrl }) {
     const htmlText = (value) => escapeAttr(value).replaceAll(safeEmail, `<a href="mailto:${safeEmail}">${safeEmail}</a>`);
     const section = (copy, lang) => {
         const beta = copy.beta;
+        // Two numbered buttons in order: get TestFlight first, then install Lumière through it.
+        const getTestFlight = `<a class="install is-first" href="${TESTFLIGHT_APP}"><span class="num">1</span>${escapeAttr(beta.testFlight)}</a>
+            <p class="aside">${escapeAttr(beta.testFlightNote)}</p>`;
         const action = testFlightUrl
-            ? `<a class="install" href="${escapeAttr(testFlightUrl)}">${escapeAttr(beta.button)}</a>
+            ? `${getTestFlight}
+            <a class="install" href="${escapeAttr(testFlightUrl)}"><span class="num">2</span>${escapeAttr(beta.button)}</a>
             <p class="desktop">${escapeAttr(beta.desktop)}</p>`
-            : `<span class="install is-soon" aria-disabled="true">${escapeAttr(beta.soon)}</span>
+            : `${getTestFlight}
+            <span class="install is-soon" aria-disabled="true"><span class="num">2</span>${escapeAttr(beta.soon)}</span>
             <p class="note">${escapeAttr(beta.soonNote)}</p>`;
         return `<section id="${lang}" lang="${lang}" data-lang="${lang}">
             <h1>${escapeAttr(beta.title)}</h1>
@@ -28,7 +33,6 @@ export function betaPage({ en, my, email, siteUrl, testFlightUrl }) {
             <ol>
                 ${beta.steps.map((step) => `<li>${escapeAttr(step)}</li>`).join('\n                ')}
             </ol>
-            <p><a href="${TESTFLIGHT_APP}">${escapeAttr(beta.testFlight)}</a></p>
             <p class="small">${htmlText(beta.feedback)}</p>
             <p class="small">${escapeAttr(beta.expiry)}</p>
         </section>`;
@@ -68,10 +72,14 @@ export function betaPage({ en, my, email, siteUrl, testFlightUrl }) {
         p { margin: 0 0 14px; }
         a { color: #9ee493; }
         .intro { color: #e3d6df; }
-        .install { display: block; text-align: center; margin: 24px 0 10px; padding: 16px 20px; border-radius: 16px; background: #9ee493; color: #2d1b29; font-weight: 700; font-size: 18px; text-decoration: none; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3); }
+        .install { display: flex; align-items: center; justify-content: center; gap: 12px; text-align: center; margin: 24px 0 10px; padding: 16px 20px; border-radius: 16px; background: #9ee493; color: #2d1b29; font-weight: 700; font-size: 18px; text-decoration: none; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3); }
         .install:active { transform: scale(0.98); }
+        .install.is-first { background: #f2e9ef; margin-top: 28px; }
+        .num { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: #2d1b29; color: #f2e9ef; font-size: 16px; }
+        .is-soon .num { background: rgba(242, 233, 239, 0.16); color: #b39cad; }
+        .aside { text-align: center; }
         .install.is-soon { background: rgba(242, 233, 239, 0.12); color: #b39cad; box-shadow: none; }
-        .note, .needs, .desktop, .small { color: #b39cad; font-size: 15px; }
+        .note, .needs, .desktop, .small, .aside { color: #b39cad; font-size: 15px; }
         .desktop { display: none; }
         .is-desktop .desktop { display: block; }
         ol { margin: 0 0 18px; padding-left: 22px; }

@@ -51,11 +51,13 @@ export default {
         desktop: 'Open this page on your iPhone to install.',
         stepsTitle: 'How it works',
         steps: [
-            'Tap Install on iPhone. If you don’t have TestFlight yet, the App Store opens it first: tap Get, then come back and tap Install on iPhone again.',
+            'Tap Get TestFlight from the App Store, then tap Get in the App Store. Skip this if you already have TestFlight.',
+            'Come back to this page and tap Install on iPhone.',
             'In TestFlight, tap Accept, then Install.',
-            'Open Lumière and sign up. Everything you see is the real app on the real server.',
         ],
+        // Button 1, above Install on iPhone. Links to TestFlight on the App Store.
         testFlight: 'Get TestFlight from the App Store',
+        testFlightNote: 'Free from Apple. Already have TestFlight? Go to step 2.',
         needs: 'Needs an iPhone with iOS 18 or later.',
         feedback: 'Found something wrong? Take a screenshot in Lumière and TestFlight asks if you want to send it to us. Or email lumiere@onezcodes.com.',
         expiry: 'Each test version works for 90 days. TestFlight updates it for you when we send a new one.',

@@ -9,8 +9,8 @@ export const site = {
     appStoreUrl: null,
     playStoreUrl: null,
     // TestFlight public link for /beta/ (https://testflight.apple.com/join/…). Null shows "Opening soon"
-    // until Apple approves the first external build.
-    testFlightUrl: null,
+    // when there is no public link.
+    testFlightUrl: 'https://testflight.apple.com/join/DuWyRMqN',
     supportEmail: 'lumiere@onezcodes.com',
     privacyUrl: '/privacy/',
     termsUrl: '/terms/',
