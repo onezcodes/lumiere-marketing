@@ -11,6 +11,15 @@ export const site = {
     // TestFlight public link for /beta/ (https://testflight.apple.com/join/…). Null shows "Opening soon"
     // when there is no public link.
     testFlightUrl: 'https://testflight.apple.com/join/DuWyRMqN',
+    // Android test build for /android-beta/. The APK is too big for the site's static files (Cloudflare
+    // serves up to 25 MB each), so it lives elsewhere: paste a direct download link here. Null shows
+    // "Opening soon". Update the version and size with each new build.
+    // Google Drive direct-download form (https://drive.usercontent.google.com/download?id=<file id>&export=download),
+    // not the /file/d/…/view link, which opens Drive's preview page. The file must be shared as
+    // "Anyone with the link", or people land on a Google sign-in page.
+    androidApkUrl: 'https://drive.usercontent.google.com/download?id=11qpjmUBV7MjCcFVHxb2fDBEf-3FwD2Db&export=download',
+    androidApkVersion: '1.0.0',
+    androidApkSize: '90 MB',
     supportEmail: 'lumiere@onezcodes.com',
     privacyUrl: '/privacy/',
     termsUrl: '/terms/',

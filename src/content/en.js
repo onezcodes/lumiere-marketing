@@ -66,6 +66,30 @@ export default {
         feedback: 'Found something wrong? Take a screenshot in Lumière and TestFlight asks if you want to send it to us. Or email lumiere@onezcodes.com.',
         expiry: 'Each test version works for 90 days. TestFlight updates it for you when we send a new one.',
     },
+    androidBeta: {
+        title: 'Try Lumière on Android',
+        intro: 'Lumière is in testing on Android. Download the test version and install it on your phone. It isn’t on Google Play yet, so Android asks you to allow the install once.',
+        about: 'What is Lumière?',
+        aboutNote: 'Myanmar astrology on your phone: monthly readings, birth charts, Mahabote, tarot, party games and real readers.',
+        aboutLink: 'See the full app',
+        button: 'Download for Android',
+        // Under the button, before the file size. {version} is site.androidApkVersion.
+        version: 'Version {version}',
+        soon: 'Opening soon',
+        soonNote: 'The Android test version isn’t ready yet. Come back in a day or two.',
+        desktop: 'Open this page on your Android phone to install.',
+        stepsTitle: 'How to install',
+        steps: [
+            'Tap Download for Android. If Chrome asks whether to keep the file, tap Download anyway.',
+            'When it finishes, tap Open. Or open Files, then Downloads, and tap the Lumière file.',
+            'If your phone says it can’t install apps from this source, tap Settings, turn on Allow from this source, then go back.',
+            'Tap Install. If Play Protect warns about an unknown app, tap More details, then Install anyway.',
+        ],
+        needs: 'Needs an Android phone with Android 8 or later.',
+        updates: 'Test versions don’t update by themselves. When there is a new one, download it here and install it over the old one. Your data stays.',
+        feedback: 'Found something wrong? Email a screenshot to lumiere@onezcodes.com.',
+        safety: 'Only download Lumière from this page. A file someone sends you may not be ours.',
+    },
     legal: {
         back: 'Lumière',
         privacy: {

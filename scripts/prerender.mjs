@@ -21,7 +21,7 @@ const { render, LANGUAGES } = await import(pathToFileURL(path.join(serverDir, 'e
 const { siteUrl, pageUrl, shareImage, hreflang, structuredData, appStoreId, ROBOTS } = await import(pathToFileURL(path.join(root, 'src/seo.js')).href);
 
 const { legalPage } = await import(pathToFileURL(path.join(root, 'src/legal-page.js')).href);
-const { betaPage } = await import(pathToFileURL(path.join(root, 'src/beta-page.js')).href);
+const { betaPage, androidBetaPage } = await import(pathToFileURL(path.join(root, 'src/beta-page.js')).href);
 const { pricing, site } = await import(pathToFileURL(path.join(root, 'src/content/site.js')).href);
 const template = await readFile(path.join(dist, 'index.html'), 'utf8');
 const langs = Object.values(LANGUAGES);
@@ -154,6 +154,22 @@ await writeFile(
     betaPage({ en: LANGUAGES.en, my: LANGUAGES.my, email: site.supportEmail, siteUrl, testFlightUrl: site.testFlightUrl }),
 );
 console.log('wrote /beta/');
+
+// Android test page: downloads the APK from site.androidApkUrl. Noindex and out of the sitemap too.
+await mkdir(path.join(dist, 'android-beta'), { recursive: true });
+await writeFile(
+    path.join(dist, 'android-beta', 'index.html'),
+    androidBetaPage({
+        en: LANGUAGES.en,
+        my: LANGUAGES.my,
+        email: site.supportEmail,
+        siteUrl,
+        apkUrl: site.androidApkUrl,
+        apkVersion: site.androidApkVersion,
+        apkSize: site.androidApkSize,
+    }),
+);
+console.log('wrote /android-beta/');
 
 const legalUrls = ['privacy', 'app-privacy', 'terms']
     .map(
