@@ -17,7 +17,7 @@ export const site = {
     // Google Drive direct-download form (https://drive.usercontent.google.com/download?id=<file id>&export=download),
     // not the /file/d/…/view link, which opens Drive's preview page. The file must be shared as
     // "Anyone with the link", or people land on a Google sign-in page.
-    androidApkUrl: 'https://drive.usercontent.google.com/download?id=11qpjmUBV7MjCcFVHxb2fDBEf-3FwD2Db&export=download',
+    androidApkUrl: 'https://drive.usercontent.google.com/download?id=17_BBQ-WtgxNi73Cs1VX7YwMh-mnOcg3T&export=download',
     androidApkVersion: '1.0.0',
     androidApkSize: '90 MB',
     supportEmail: 'lumiere@onezcodes.com',
